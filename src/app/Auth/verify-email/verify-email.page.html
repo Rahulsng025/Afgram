@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Verify Your Account </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" >
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Verify</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+<div class="container">
+  <img class="imgs" src="../../../assets/images/undraw_two_factor_authentication_namy.svg" />
+
+  <div class="text" *ngIf="authService.userData as user">
+    <p class="text-center">
+      We have sent a confirmation email to <strong class="mail">{{ user.email }}</strong>.
+    </p>
+    <p class="text-center">
+      Please check your email and click on the link to verfiy your email
+      address.
+    </p>
+  </div>
+  <div>
+    <input
+      type="button"
+      (click)="authService.checkEmailVerified()"
+      class="form__button"
+      value="Check Verification"
+    />
+ 
+    <input
+      type="button"
+      (click)="authService.SendVerificationMail()"
+      class="form__button"
+      value="Resend Verification Email"
+    />
+  </div>
+</div>
+  <!-- <app-explore-container name="Tab 3 page"></app-explore-container> -->
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Login </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <form>
+    <ion-item>
+      <ion-label>Usermail</ion-label>
+      <ion-input
+        type="text"
+        class="formControl"
+        #userName
+        required
+        class="input-field"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input
+        type="password"
+        class="formControl"
+        class="input-field"
+        #userPassword
+        required
+      ></ion-input>
+    </ion-item>
+    <!-- <ion-button (click)="authService.SignIn(userName.value, userPassword.value)"
+      >Login</ion-button -->
+    >
+  </form>
+  <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
+</ion-content>

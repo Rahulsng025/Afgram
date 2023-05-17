@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon name="camera-outline" size="large"></ion-icon>
+    </ion-buttons>
+    <ion-title>Afgram</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  (click)="notification()"><ion-icon name="notifications-outline" size="large" ></ion-icon></ion-button>
+      <div></div>
+      <ion-icon name="paper-plane-outline" size="large"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div class="container">
+  <br>
+    <app-story></app-story>
+    <hr class="solid">
+    <app-post></app-post>
+  </div>
+</ion-content>

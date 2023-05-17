@@ -1,0 +1,166 @@
+<div *ngFor="let post of newPost">
+  <div class="container">
+    <div class="top-container">
+      <div>
+      <ion-avatar slot="start" class="img">
+        <ion-img *ngIf="post.user.profile_image" src="https://infodeltasys.nl/{{ post.user.profile_image }}"></ion-img>
+        <ion-img  *ngIf="!post.user.profile_image"
+        src="https://images.ctfassets.net/hrltx12pl8hq/3j5RylRv1ZdswxcBaMi0y7/b84fa97296bd2350db6ea194c0dce7db/Music_Icon.jpg"></ion-img>
+
+      </ion-avatar>
+     </div>
+      <div class="text">
+        <div class="name">{{post.user.name}}
+          <p class="date">
+            {{ post.created_at | date }} at
+            {{ post.created_at | date : "h:mm a" }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button class="more" *ngIf="post.user.id == newImage.id"> ...
+      </button>
+    </div>
+  </div>
+  <div class="location">
+
+    {{post.caption}}</div>
+
+  <img *ngIf="post.image != null" src="https://infodeltasys.nl/cportal/storage/app/public/post/{{post.image}}"
+    alt="image.alt" class="slide-img">
+  <!-- <ion-slides [options]="slideOpts">
+    <ion-slide *ngFor="let image of {{post.image}}">
+
+    </ion-slide>
+  </ion-slides> -->
+
+  <div class="comment-like-container">
+    <div class="comment-like">
+      <div *ngFor="let likedEmoji of post.likes; let i = index" style="float: left">
+        <div *ngIf="i < 2">
+          <img src="./assets/images/react/emoji7.gif" *ngIf="likedEmoji.like == 7" height="20px" width="20px" />
+          <img src="./assets/images/react/emoji1.gif" *ngIf="likedEmoji.like == 1" height="20px" width="20px" />
+          <img src="./assets/images/react/emoji2.gif" *ngIf="likedEmoji.like == 2" height="20px" width="20px" />
+          <img src="./assets/images/react/emoji3.gif" *ngIf="likedEmoji.like == 3" height="20px" width="20px" />
+          <img src="./assets/images/react/emoji4.gif" *ngIf="likedEmoji.like == 4" height="20px" width="20px" />
+          <img src="./assets/images/react/emoji5.gif" *ngIf="likedEmoji.like == 5" height="20px" width="20px" />
+          <img src="./assets/images/react/emoji6.gif" *ngIf="likedEmoji.like == 6" height="20px" width="20px" />
+
+          <img src="./assets/images/react/emoji8.gif" *ngIf="likedEmoji.like == 8" height="20px" width="20px" />
+        </div>
+      </div>
+      <p class="number" *ngIf="post.likes.length > 0" (click)="showLikeModal(post.id)" style="cursor: pointer">
+        and
+        {{ post.likes.length > 2 ? post.likes.length - 2 : 0 }}
+        Others
+      </p>
+    </div>
+
+    <div class="col-sm-6">
+      <p *ngIf="post.comment.length > 0" align="right" class="number" (click)="showCommentModal(post.id)">
+        {{ post.comment.length }} Comments
+      </p>
+    </div>
+  </div>
+  <div class="bottom-container">
+    <div>
+      <ion-buttons class="icon">
+        <ion-icon name="thumbs-up-outline" size=""></ion-icon>
+      </ion-buttons>
+    </div>
+    <div>
+      <ion-buttons class="icon"   id="open-modal1" expand="block">
+        Comment
+      </ion-buttons>
+    </div>
+    <div>
+      <ion-buttons class="icon">
+        share
+      </ion-buttons>
+    </div>
+   
+    
+        
+            <!-- <ion-button id="open-modal1" expand="block">Add Post</ion-button> -->
+        
+            <ion-modal #modal trigger="open-modal1" [presentingElement]="presentingElement">
+              <ng-template>
+                <ion-header>
+                  <ion-toolbar>
+                    <ion-title>Add post</ion-title>
+                    <ion-buttons slot="end">
+                      <ion-button id="close" (click)="modal.dismiss()">Close</ion-button>
+                    </ion-buttons>
+                  </ion-toolbar>
+                </ion-header>
+                <ion-content>
+                  <div class="image-preview">
+                    <img [src]="previewImage" *ngIf="previewImage">
+                  </div>
+                  <img [src]="imagePreview" *ngIf="imagePreview">
+                  <ion-input [(ngModel)]="textFieldData" placeholder="Caption" class="input-field caption"></ion-input>
+                  <div class="upload-container">
+        
+        
+                    <label class="custom-file-upload">
+                      Select Image
+                      <input type="file" (change)="onFileSelected($event)">
+        
+                    </label> <button  class="file-upload-btn">Upload</button>
+                  </div>
+                </ion-content>
+              
+              </ng-template>
+            </ion-modal>
+         
+ 
+  
+
+  </div>
+  <ion-list>
+    <div *ngFor="let comment of post.comment">
+      <div class="comment-container">
+      <div class="cmt-container">
+        <div>
+      <ion-avatar slot="start" class="img">
+        <ion-img src="https://infodeltasys.nl/{{comment.profile_image}}"></ion-img>
+      </ion-avatar></div>
+      <ion-label>
+        <h3>{{ comment.user_name }}</h3>
+        <p>{{ comment.comment }}</p>
+      </ion-label> 
+      
+    </div>
+    <div class="cmt-contaiiner-bottom">
+        <button class="cmt-contaiiner-bottom-btn">like</button>
+        <button class="cmt-contaiiner-bottom-btn">reply</button>
+      </div>
+      </div>
+      <div *ngFor="let reply of post.replies" class="reply-container">
+        <div *ngIf="reply.comment_id==comment.id" class="reply-cont"  >
+          <div class="reply">
+          <div>
+      <ion-avatar slot="start" class="img-reply">
+        <ion-img src="https://infodeltasys.nl/{{reply.profile_image}}" ></ion-img>
+      </ion-avatar></div>
+      <ion-label>
+        <h4>{{ reply.user_name }}</h4>
+        <p>{{ reply.message }}</p>
+      </ion-label> </div><div class="rp-contaiiner-bottom">
+        <button class="cmt-contaiiner-bottom-btn">like</button>
+        <button class="cmt-contaiiner-bottom-btn">reply</button>
+      </div></div>
+     
+    </div>
+  </div>
+
+   
+  </ion-list> 
+  
+
+
+
+
+
+</div>

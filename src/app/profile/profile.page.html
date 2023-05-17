@@ -1,0 +1,413 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div>
+      <a>
+
+        <div class="cover"  >
+          <img *ngIf="coverImage != null"
+            src="https://infodeltasys.nl/cportal/storage/app/public/coverphoto/{{ coverImage.image }}" alt="image"
+            class="cover-img" />
+          <img *ngIf="coverImage.image == null "
+            src="https://images.unsplash.com/photo-1623627484632-f041d1fb366d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y292ZXIlMjBwaG90b3xlbnwwfHwwfHw%3D&w=1000&q=80"
+            alt="image" class="cover-img" />
+        </div>
+        <div class="avatar" >
+          <div class="avatar" *ngIf="newImage!= null"  >
+          <img *ngIf="newImage.profile != null" src="https://infodeltasys.nl/{{ newImage.profile.image_url }}"
+            alt="image" class="avatar-img" />
+          <img *ngIf="newImage.profile == null" src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="image"
+            class="avatar-img" />
+        </div></div>
+
+      </a>
+      <div class="cover-modal">
+        <ion-content class="ion-padding">
+          <ion-button id="open-cover-modal" expand="block" class="avatarbtn">
+            <ion-icon name="camera-outline" class="avatar-icon"></ion-icon>
+          </ion-button>
+          <p>{{ message }}</p>
+          <ion-modal #covermodal trigger="open-cover-modal" [presentingElement]="presentingElement">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>Add Cover Image</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button  id="close2" (click)="covermodal.dismiss(); navigate();">Close</ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content>
+                <div class="image-preview">
+                  <img [src]="previewImage" *ngIf="previewImage">
+                </div>
+                <br /> <br /> <br />
+                <div class="upload-container">
+                  
+                  <button (click)="takePicture()" class="file-upload-btn">Upload Cover Picture</button>
+                   <button *ngIf="coverImage == null" (click)="addCoverImage()"
+                    class="file-upload-btn">Upload</button>
+                  <button *ngIf="coverImage.image != null" (click)="updateCoverImage()"
+                    class="file-upload-btn">Upload</button>
+                </div>
+              </ion-content>
+
+            </ng-template>
+          </ion-modal>
+        </ion-content>
+      </div>
+      <div class="avatar-modal">
+        <ion-content class="ion-padding ">
+          <ion-button   id="open-modalp" expand="block" class="avatarbtn">        
+                <ion-icon name="camera-outline" class="avatar-icon"></ion-icon>
+          </ion-button>
+      
+          <ion-modal #modalp trigger="open-modalp" [presentingElement]="presentingElement">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title >Add Profile Image</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button id="closep" (click)="modalp.dismiss(); navigate();">Close</ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content>
+                <div class="image-preview">
+                  <img [src]="previewImage" *ngIf="previewImage">
+                </div>
+                <br /> <br /> <br />
+                <div class="upload-container">
+      
+                  <button (click)="takePicture()" class="file-upload-btn">Upload Picture</button>
+      
+                  <button *ngIf="newImage.profile != null" (click)="editProfileImage()"
+                  class="file-upload-btn">Upload</button>
+                <button *ngIf="newImage.profile == null" (click)="addProfileImage()"
+                  class="file-upload-btn">Upload</button>
+                </div>
+              </ion-content>
+
+            </ng-template>
+          </ion-modal>
+        </ion-content>
+      </div>
+      
+    </div>
+  </div>
+  <br />
+  <br />
+
+
+  <div>
+    <ion-item>
+      <ion-label>
+        <h2>{{ newImage.name }}</h2>
+      </ion-label>
+    </ion-item>
+  </div>
+
+  <ion-content class="ion-padding add-post">
+    <ion-button   id="open-modal3" expand="block">Add Post</ion-button>
+
+    <ion-modal #modal3 trigger="open-modal3" [presentingElement]="presentingElement">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title >Add post</ion-title>
+            <ion-buttons slot="end">
+              <ion-button id="close3" (click)="modal3.dismiss(); navigate();">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <div class="image-preview">
+            <img [src]="previewImage" *ngIf="previewImage">
+          </div>
+          <!-- <img [src]="imagePreview" *ngIf="imagePreview"> -->
+          <ion-input [(ngModel)]="textFieldData" placeholder="Caption" class="input-field caption"></ion-input>
+          <div class="upload-container">
+
+            <button (click)="takePicture()" class="file-upload-btn">Upload Picture</button>
+
+            <!-- <label class="custom-file-upload">
+              Select Image
+              <input type="file" (change)="onFileSelected($event)">
+
+            </label>  -->
+            <button (click)="addPost()" class="file-upload-btn">Upload</button>
+            
+          </div>
+        </ion-content>
+        <!-- <ion-content>
+              <ion-list>
+                <ion-item>
+                  <ion-avatar slot="start">
+                    <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+                  </ion-avatar>
+                  <ion-label>
+                    <h2>Connor Smith</h2>
+                    <p>Sales Rep</p>
+                  </ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-avatar slot="start">
+                    <ion-img src="https://i.pravatar.cc/300?u=a"></ion-img>
+                  </ion-avatar>
+                  <ion-label>
+                    <h2>Daniel Smith</h2>
+                    <p>Product Designer</p>
+                  </ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-avatar slot="start">
+                    <ion-img src="https://i.pravatar.cc/300?u=d"></ion-img>
+                  </ion-avatar>
+                  <ion-label>
+                    <h2>Greg Smith</h2>
+                    <p>Director of Operations</p>
+                  </ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-avatar slot="start">
+                    <ion-img src="https://i.pravatar.cc/300?u=e"></ion-img>
+                  </ion-avatar>
+                  <ion-label>
+                    <h2>Zoey Smith</h2>
+                    <p>CEO</p>
+                  </ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-content> -->
+      </ng-template>
+    </ion-modal>
+  </ion-content>
+
+  <div *ngFor="let post of newPost">
+    <div class="container">
+      <div class="top-container">
+        <div>
+        <ion-avatar slot="start" class="img">
+          <ion-img *ngIf="post.user.profile_image" src="https://infodeltasys.nl/{{ post.user.profile_image }}"></ion-img>
+          <ion-img  *ngIf="!post.user.profile_image"
+          src="https://images.ctfassets.net/hrltx12pl8hq/3j5RylRv1ZdswxcBaMi0y7/b84fa97296bd2350db6ea194c0dce7db/Music_Icon.jpg"></ion-img>
+  
+        </ion-avatar>
+       </div>
+        <div class="text">
+          <div class="name">{{post.user.name}}
+            <p class="date">
+              {{ post.created_at | date }} at
+              {{ post.created_at | date : "h:mm a" }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="more" *ngIf="post.user.id == newImage.id"> ...
+        </button>
+      </div>
+    </div>
+    <div class="location">
+  
+      {{post.caption}}</div>
+  
+    <img *ngIf="post.image != null" src="https://infodeltasys.nl/cportal/storage/app/public/post/{{post.image}}"
+      alt="image.alt" class="slide-img">
+      
+    <!-- <ion-slides [options]="slideOpts">
+      <ion-slide *ngFor="let image of {{post.image}}">
+  
+      </ion-slide>
+    </ion-slides> -->
+  
+    <div class="comment-like-container">
+      <div class="comment-like">
+        <div *ngFor="let likedEmoji of post.likes; let i = index" style="float: left">
+          <div *ngIf="i < 2">
+            <img src="./assets/images/react/emoji7.gif" *ngIf="likedEmoji.like == 7" height="20px" width="20px" />
+            <img src="./assets/images/react/emoji1.gif" *ngIf="likedEmoji.like == 1" height="20px" width="20px" />
+            <img src="./assets/images/react/emoji2.gif" *ngIf="likedEmoji.like == 2" height="20px" width="20px" />
+            <img src="./assets/images/react/emoji3.gif" *ngIf="likedEmoji.like == 3" height="20px" width="20px" />
+            <img src="./assets/images/react/emoji4.gif" *ngIf="likedEmoji.like == 4" height="20px" width="20px" />
+            <img src="./assets/images/react/emoji5.gif" *ngIf="likedEmoji.like == 5" height="20px" width="20px" />
+            <img src="./assets/images/react/emoji6.gif" *ngIf="likedEmoji.like == 6" height="20px" width="20px" />
+  
+            <img src="./assets/images/react/emoji8.gif" *ngIf="likedEmoji.like == 8" height="20px" width="20px" />
+          </div>
+        </div>
+        <p class="number" *ngIf="post.likes.length > 0" style="cursor: pointer">
+          and
+          {{ post.likes.length > 2 ? post.likes.length - 2 : 0 }}
+          Others
+        </p>
+      </div>
+  
+      <div class="col-sm-6">
+        <p *ngIf="post.comment.length > 0" align="right" class="number" >
+          {{ post.comment.length }} Comments
+        </p>
+      </div>
+    </div>
+    <div class="bottom-container">
+      <div>
+        <ion-buttons class="icon">
+        
+          <div class="container">
+            <div class="element">
+                           <p class="hidden">Additional content here</p> 
+
+               <ion-icon name="thumbs-up-outline" size=""></ion-icon>
+            </div>
+          </div>
+          
+        </ion-buttons></div>
+        <!-- <ion-buttons class="icon">
+          <ion-icon name="thumbs-up-outline" size=""></ion-icon>
+        </ion-buttons> -->
+      
+      <div>
+        <ion-buttons class="icon"  id="open-modal5" expand="block">
+          Comment
+        </ion-buttons>
+      </div>
+      <div>
+        <ion-buttons class="icon">
+          share
+        </ion-buttons>
+      </div>
+  
+<!-- comment modal -->
+<ion-modal #modal5 trigger="open-modal5" [presentingElement]="presentingElement">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Add post</ion-title>
+        <ion-buttons slot="end">
+          <ion-button id="close5" (click)="modal5.dismiss(); navigate();">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <div *ngFor="let comment of post.comment">
+          <div class="comment-container">
+          <div class="cmt-container">
+            <div>
+          <ion-avatar slot="start" class="img">
+            <ion-img src="https://infodeltasys.nl/{{comment.profile_image}}"></ion-img>
+          </ion-avatar></div>
+          <ion-label>
+            <h3>{{ comment.user_name }}</h3>
+            <p>{{ comment.comment }}</p>
+          </ion-label> 
+          
+        </div>
+        <div class="cmt-contaiiner-bottom">
+            <button class="cmt-contaiiner-bottom-btn">like</button>
+            <button class="cmt-contaiiner-bottom-btn">reply</button>
+          </div>
+          </div>
+          <div *ngFor="let reply of post.replies" class="reply-container">
+            <div *ngIf="reply.comment_id==comment.id" class="reply-cont"  >
+              <div class="reply">
+              <div>
+          <ion-avatar slot="start" class="img-reply">
+            <ion-img src="https://infodeltasys.nl/{{reply.profile_image}}" ></ion-img>
+          </ion-avatar></div>
+          <ion-label>
+            <h4>{{ reply.user_name }}</h4>
+            <p>{{ reply.message }}</p>
+          </ion-label> </div><div class="rp-contaiiner-bottom">
+            <button class="cmt-contaiiner-bottom-btn">like</button>
+            <button class="cmt-contaiiner-bottom-btn">reply</button>
+          </div></div>
+         
+        </div>
+      </div>
+    
+       
+      </ion-list> 
+      <div class="image-preview">
+        <img [src]="previewImage" *ngIf="previewImage">
+      </div>
+      <img [src]="imagePreview" *ngIf="imagePreview">
+      <ion-input [(ngModel)]="textFieldData" placeholder="comment" class="input-field caption"></ion-input>
+      <div class="upload-container">
+
+
+        <!-- <label class="custom-file-upload">
+          Select Image
+          <input type="file" (change)="onFileSelected($event)">
+
+        </label> -->
+         <button (click)="addPost()" class="file-upload-btn">Upload</button>
+        
+      </div>
+    </ion-content>
+   
+           
+  </ng-template>
+</ion-modal>
+
+
+
+    
+  
+    </div>
+    <ion-list>
+      <div *ngFor="let comment of post.comment">
+        <div class="comment-container">
+        <div class="cmt-container">
+          <div>
+        <ion-avatar slot="start" class="img">
+          <ion-img src="https://infodeltasys.nl/{{comment.profile_image}}"></ion-img>
+        </ion-avatar></div>
+        <ion-label>
+          <h3>{{ comment.user_name }}</h3>
+          <p>{{ comment.comment }}</p>
+        </ion-label> 
+        
+      </div>
+      <div class="cmt-contaiiner-bottom">
+          <button class="cmt-contaiiner-bottom-btn">like</button>
+          <button class="cmt-contaiiner-bottom-btn">reply</button>
+        </div>
+        </div>
+        <div *ngFor="let reply of post.replies" class="reply-container">
+          <div *ngIf="reply.comment_id==comment.id" class="reply-cont"  >
+            <div class="reply">
+            <div>
+        <ion-avatar slot="start" class="img-reply">
+          <ion-img src="https://infodeltasys.nl/{{reply.profile_image}}" ></ion-img>
+        </ion-avatar></div>
+        <ion-label>
+          <h4>{{ reply.user_name }}</h4>
+          <p>{{ reply.message }}</p>
+        </ion-label> </div><div class="rp-contaiiner-bottom">
+          <button class="cmt-contaiiner-bottom-btn">like</button>
+          <button class="cmt-contaiiner-bottom-btn">reply</button>
+        </div></div>
+       
+      </div>
+    </div>
+  
+     
+    </ion-list> 
+    
+  
+  
+  
+  
+  
+  </div>
+  <br/>
+  <br/>
+  <br/>
+
+</ion-content>

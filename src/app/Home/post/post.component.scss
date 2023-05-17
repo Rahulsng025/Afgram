@@ -1,0 +1,138 @@
+.img {
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    padding: 10px
+}
+.img-reply {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    padding: 10px
+}
+
+.top-container {
+    display: flex;
+}
+
+.bottom-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px;
+}
+
+.name {
+    font-size: 13px;
+}
+
+.date {
+    font-size: 9px;
+    padding-top: -5px;
+}
+
+.location {
+    font-size: 15px;
+    padding: 10px;
+}
+
+.text {
+    padding: 20px 0px 0px 0px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.more {
+    padding: 10px;
+    background: none;
+    color: black;
+    font-size: larger;
+}
+
+.slide-img {
+    width: 100%;
+    height: auto;
+}
+
+.icon {
+    padding-left: 10px;
+}
+
+.comment-list {
+    display: flex;
+
+}
+
+.comment-like {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.comment-like-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.reply-container {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+
+}
+.reply-cont {
+    width: 80%;
+    padding: 5px;
+    margin: 5px;
+    background-color: #f0f0ef;
+    border-radius: 10px;
+}
+.reply {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    
+   
+}
+
+.cmt-container {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+   
+}
+.comment-container{
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+.cmt-contaiiner-bottom {
+    padding-left: 60px;
+}
+.rp-contaiiner-bottom {
+    padding-left: 40px;
+}
+.cmt-contaiiner-bottom-btn {
+    background: none;
+    color: rgb(89, 94, 92);
+    padding: 5px;
+}

@@ -1,0 +1,36 @@
+.img {
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    padding: 10px
+}.text {
+    padding: 25px 0px 0px 0px;
+    margin: 0;
+  font-size: 14px;
+}
+.top-container {
+    display: flex;
+    padding: 10px;
+    background-color: #fafafa;
+    color: rgb(68, 67, 67);
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    box-shadow: rgb(0 0 0 / 5%) 0px 6px 24px 0px, rgb(0 0 0 / 8%) 0px 0px 0px 1px;
+    z-index: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add_friend_btn{
+    width: 100px;
+    height: 34px;
+    border-radius: 15px;
+    background-color: #0095ff;
+
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

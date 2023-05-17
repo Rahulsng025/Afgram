@@ -1,0 +1,43 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>
+      
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+
+  <div class="login-container">
+    <ion-text class="content">
+      <h1>Welcome to <span class="name">Afgram</span> </h1>
+      <ion-text color="medium"> A Simple Chat Platform for everyone</ion-text>
+    </ion-text>
+    <form>
+      <ion-item>
+        <ion-input type="email" class="custom" class="formControl" placeholder="Email Address" #userEmail required class="input-field"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="{{passwordType}}" class="formControl custom" class="input-field" placeholder="Password"
+          #userPwd required></ion-input>
+        <ion-icon name="eye" (click)="hideShowPassword()"></ion-icon>
+
+      </ion-item>
+
+      <ion-button expand="block" shape="round" (click)=" authService.SignIn(userEmail.value, userPwd.value)">Login
+      </ion-button>
+    </form>
+    <ion-text class="content">
+      <div class="forgot">
+        <a href="forget-password" color="medium">
+          <ion-text color="medium" class="">Forgot password?</ion-text>
+        </a>
+      </div>
+      <div class="signup">
+        <ion-text color="medium"> Don't have an account? <a href="sign-up"><span class="name">SignUp</span></a>
+        </ion-text>
+      </div>
+    </ion-text>
+  </div>
+</ion-content>

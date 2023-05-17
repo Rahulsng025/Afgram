@@ -1,0 +1,84 @@
+<section class="register">
+  <div class="header">
+    <h1 style="text-align: center">Add Profile Picture</h1>
+  </div>
+  <div class="body">
+    <form
+      [formGroup]="myForm"
+      (ngSubmit)="onSubmit(Image)"
+      *ngIf="newImage.profile == null"
+    >
+      <div class="email_password">
+        <img
+          [src]="imgSrc"
+          width="380px"
+          height="240px"
+          style="margin-left: 100px"
+          (click)="fileUploader.click()"
+        />
+      </div>
+      <!-- <div class="form-group"> -->
+      <div class="email_password">
+        <input
+          type="file"
+          #Image
+          #fileUploader
+          accept="image/*"
+          (change)="showPreview($event)"
+          
+        />
+      </div>
+      <!-- </div> -->
+      <!-- <div class="form-group"> -->
+      <div class="email_password">
+        <button
+          mat-button
+          type="submit"
+          class="submit-button"
+          style="width: 100%"
+        >
+          Post
+        </button>
+      </div>
+      <!-- </div> -->
+    </form>
+    <form
+      [formGroup]="updateForm"
+      (ngSubmit)="updateProfile(newImage.profile.id, Image)"
+      *ngIf="newImage.profile"
+    >
+      <div class="email_password">
+        <img
+          src="http://{{ newImage.profile.image_url }}"
+          width="380px"
+          height="240px"
+          style="margin-left: 100px"
+          (click)="fileUploader.click()"
+        />
+      </div>
+      <!-- <div class="form-group"> -->
+      <div class="email_password">
+        <input
+          type="file"
+          #Image
+          #fileUploader
+          accept="image/*"
+          (change)="showPreview($event)"
+        />
+      </div>
+      <!-- </div> -->
+      <!-- <div class="form-group"> -->
+      <div class="email_password">
+        <button
+          mat-button
+          type="submit"
+          class="submit-button"
+          style="width: 100%"
+        >
+          Post
+        </button>
+      </div>
+      <!-- </div> -->
+    </form>
+  </div>
+</section>

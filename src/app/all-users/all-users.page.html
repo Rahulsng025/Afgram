@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>all-users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div *ngFor="let user of users">
+      <div class="top-container">
+        <div class="container">
+          <img *ngIf="user.image" src="https://infodeltasys.nl/{{ user.profile }}" class="img" />
+          <img class="img" *ngIf="user.image == null" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          <div class="text">{{user.name}}</div>
+        </div>
+        <div> <button class="add_friend_btn" (click)="addFriend(user.id)">
+          Add Friend </button></div>
+       
+      </div>
+    </div>
+  </div>
+</ion-content>

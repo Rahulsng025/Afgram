@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>notification</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container" *ngFor="let noti of notification" >
+    <div class="top-container">
+      <img  *ngIf="noti.profile_url != null" class="img"
+        src="https://infodeltasys.nl/{{noti.profile_url}}">
+
+        <img class="img" *ngIf="noti.profile_url == null"
+        src="https://ionicframework.com/docs/img/demos/avatar.svg"
+        >
+      <div class="text">
+        <div class="name">{{noti.message}}</div>
+      </div>    
+
+    </div>
+<hr class="solid">
+  </div>
+</ion-content>

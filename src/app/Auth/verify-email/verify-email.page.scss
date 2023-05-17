@@ -1,0 +1,31 @@
+.text {
+    padding: 50px;
+    font-size: medium;
+    
+}
+
+input {
+    width: 100%;
+    background: #008b8b !important;
+    color: white;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    padding: 20px;
+}
+
+.mail {
+    font-weight: 900;
+    font-size: medium;
+    color:#008b8b
+}

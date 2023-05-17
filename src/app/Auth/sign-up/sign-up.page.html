@@ -1,0 +1,47 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>sign-up</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+<ion-content>
+
+  <div class="login-container">
+    <ion-text class="content">
+      <h1>Create an account </h1>
+      <ion-text color="medium"> A Simple Chat Platform for everyone</ion-text>
+    </ion-text>
+    <form>
+      <div>
+        <ion-item>
+          <ion-input type="text" class="formControl" placeholder="Name" #name required class="input-field"></ion-input>
+        </ion-item>
+      </div>
+      <ion-item>
+        <ion-input type="email" class="formControl" placeholder="Email Address" #userEmail required class="input-field">
+
+
+        </ion-input>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="{{passwordType}}" class="formControl custom" class="input-field" placeholder="Password"
+          #userPwd required>
+
+        </ion-input>
+        <ion-icon name="eye" (click)="hideShowPassword()"></ion-icon>
+      </ion-item>
+
+      <ion-button (click)="
+  authService.SignUp(name.value, userEmail.value, userPwd.value); authService.checkEmailVerified();
+" class="form__button" value="SignUp">SignUp</ion-button>
+    </form>
+    <ion-text class="content">
+
+      <div class="signup">
+        <ion-text color="medium"> Don't have an account? <a href="login-form"><span class="name">SignIn</span></a>
+        </ion-text>
+      </div>
+    </ion-text>
+  </div>
+</ion-content>

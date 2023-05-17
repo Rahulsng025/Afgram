@@ -1,0 +1,15 @@
+ion-toolbar {
+    --background: #fafafa;
+    --color: #000;
+  }
+  
+  ion-title {
+    font-size: 24px;
+  }
+  
+  .container::-webkit-scrollbar {
+    display: none;
+  }
+  hr.solid {
+    border-top: 1px solid #bbb;
+  }
