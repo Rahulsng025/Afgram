@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">afgram</string>
-    <string name="title_activity_main">afgram</string>
-    <string name="package_name">com.example.app</string>
-    <string name="custom_url_scheme">com.example.app</string>
+    <string name="app_name">Afgram</string>
+    <string name="title_activity_main">Afgram</string>
+    <string name="package_name">com.social.afgram</string>
+    <string name="custom_url_scheme">com.social.afgram</string>
 </resources>

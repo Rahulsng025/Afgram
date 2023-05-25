@@ -1,4 +1,4 @@
-package com.example.app;
+package com.social.afgram;
 
 import com.getcapacitor.BridgeActivity;
 
